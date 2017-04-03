@@ -32,15 +32,10 @@
 			var res = [];
 			while (s.length > 50) {
 				var t, n, f = "";
-				if (ws.test(s[49])) {
-					t = 49; n = 50;
-				} else if (ws.test(s[50])) {
-					t = 50; n = 51;
-				} else if (ws.test(s[48])) {
-					t = 48; n = 49;
-				} else {
-					t = 49; n = 49; f = "-";
-				}
+				if (ws.test(s[49])) {t = 49; n = 50;} 
+				else if (ws.test(s[50])) {t = 50; n = 51;} 
+				else if (ws.test(s[48])) {t = 48; n = 49;} 
+				else {t = 49; n = 49; f = "-";}
 				res.push(s.slice(0, t) + f);
 				s = s.slice(n);
 			}
