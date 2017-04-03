@@ -20,8 +20,8 @@ It works when you're focused anywhere on the document, including input boxes.
 
 ## Screenshots
 
-![https://owen.cafe/images/projects/cowjs/firefox.png](firefox)
-![https://owen.cafe/images/projects/cowjs/chromium.png](chromium)
+![firefox](https://owen.cafe/images/projects/cowjs/firefox.png)
+![chromium](https://owen.cafe/images/projects/cowjs/chromium.png)
 
 ## Features
 
