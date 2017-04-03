@@ -10,7 +10,7 @@ It works when you're focused anywhere on the document, including input boxes.
 1. Open your javascript console
 2. Refocus your webpage
 3. Type some amusing quips
-4. Press <Enter>
+4. Press Enter
 
 ## How to put this on your site
 
