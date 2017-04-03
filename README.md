@@ -20,8 +20,9 @@ It works when you're focused anywhere on the document, including input boxes.
 
 ## Screenshots
 
-![firefox](https://owen.cafe/images/projects/cowjs/firefox.png)
-![chromium](https://owen.cafe/images/projects/cowjs/chromium.png)
+![Introduction, Marx & Engels - Firefox](https://owen.cafe/images/projects/cowjs/intro.png)
+![Bee Movie - Chromium](https://owen.cafe/images/projects/cowjs/bee.png)
+![Nested cows - Firefox](https://owen.cafe/images/projects/cowjs/nesting.png)
 
 ## Features
 
