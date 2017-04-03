@@ -3,7 +3,8 @@
 CowJS is an easter egg for people who look at your javascript console. It takes
 input from keypresses on your website, and prints beautiful cowsays to your
 console. It works when you're focused anywhere on the document, including input
-boxes. Try the live demo on my website here: [https://owen.cafe/](https://owen.cafe/)
+boxes. Try the **live demo** on my website:
+[https://owen.cafe/](https://owen.cafe/)
 
 ## How to use
 
