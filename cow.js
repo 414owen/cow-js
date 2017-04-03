@@ -23,12 +23,12 @@
 	}
 
 	// State and whitespace regex
-	var text = "", ws = /\s/;
+	var text = "", ws = /^\s*$/;
 
 	function cow(a) {
 
 		// Array of lines based on newlines and 50 char limit
-		var s = a.trim().split("\n").reduce(function(a, s) {
+		var s = a.split("\n").reduce(function(a, s) {
 			var res = [];
 			while (s.length > 50) {
 				var t, n, f = "";
@@ -47,6 +47,13 @@
 			res.push(s)
 			return a.concat(res);
 		}, []);
+
+		// Trim blank lines, but leave spaces in for formatting
+		while (ws.test(s[0])) {s = s.slice(1);}
+		while (ws.test(s[s.length - 1])) {s = s.slice(0, s.length - 1);}
+
+		// Don't print nothing
+		if (s.length === 0) {return;}
 
 		// Find longest line
 		var l = s.reduce(function(acc, val) {
@@ -94,5 +101,4 @@
 
 	// Be helpful
 	cow("Focus the page, type, then press enter");
-
 }();

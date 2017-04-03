@@ -25,6 +25,7 @@ It works when you're focused anywhere on the document, including input boxes.
 
 ## Features
 
+* Cow nesting
 * Paste support
 * Neat line wrapping
 * One cow fits all
