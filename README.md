@@ -29,5 +29,5 @@ It works when you're focused anywhere on the document, including input boxes.
 * Cow nesting
 * Paste support
 * Neat line wrapping
-* 60-line codebase
+* 58-line codebase
 * One cow fits all
