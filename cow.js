@@ -85,13 +85,21 @@
 	// Handle keypresses
 	document.onkeydown = function(e) {
 		var elName = document.activeElement.tagName.toLowerCase();
-		if (e.ctrlKey || (badEls.indexOf(elName) !== -1)) {return;}
 		e.preventDefault();
-		if (e.keyCode === 13) {
+		if (e.keyCode === 8) {
+			if (e.ctrlKey) {
+				var t = text.split(/\s/);
+				text = text.slice(0, text.length - t[t.length - 1].length);
+				while (ws.test(text[text.length - 1])) {
+					text = text.slice(0, text.length - 1);
+				}
+			} else {
+				text = text.slice(0, text.length - 1);
+			}
+		} else if (e.ctrlKey || (badEls.indexOf(elName) !== -1)) {
+		} else if (e.keyCode === 13) {
 			if (e.shiftKey) {text += "\n";} 
 			else {cow(text); text  = "";}
-		} else if (e.keyCode === 8) {
-			text = text.slice(0, text.length - 1);
 		} else if (e.key && e.key.length === 1) {
 			text += e.key;
 		} else if (e.keyIdentifier) {
