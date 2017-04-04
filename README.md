@@ -30,5 +30,5 @@ boxes. Try the **live demo** on my website:
 ## Screenshots
 
 ![Introduction, Marx & Engels - Firefox](https://owen.cafe/images/projects/cowjs/intro.png)
-![Bee Movie - Chromium](https://owen.cafe/images/projects/cowjs/bee.png)
+![Bee Movie - Chromium](https://owen.cafe/images/projects/cowjs/bee-1.png)
 ![Nested cows - Firefox](https://owen.cafe/images/projects/cowjs/nesting.png)

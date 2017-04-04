@@ -38,10 +38,10 @@
 				if (ws.test(s[50])) {t++; n++;} 
 				else if (ws.test(s[48])) {t--; n--;} 
 				else if (!ws.test(s[49])) {f = "-"; n--;}
-				res.push((s.slice(0, t) + f).trim());
+				res.push(s.slice(0, t) + f);
 				s = s.slice(n);
 			}
-			res.push(s.trim());
+			res.push(s);
 			return a.concat(res);
 		}, []);
 		// Trim blank lines, but leave spaces in for formatting
