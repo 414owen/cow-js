@@ -26,7 +26,7 @@
 
 	// State, whitespace regex, space alias
 	var text = "", ws = /^\s*$/, space = " ",
-		repSpace = rep.bind(space, space);
+		repSpace = rep.bind(space, space), badEls = ["textarea", "input"];
 
 	function cow(a) {
 
@@ -84,7 +84,8 @@
 
 	// Handle keypresses
 	document.onkeydown = function(e) {
-		if (e.ctrlKey) {return;}
+		var elName = document.activeElement.tagName.toLowerCase();
+		if (e.ctrlKey || (badEls.indexOf(elName) !== -1)) {return;}
 		e.preventDefault();
 		if (e.keyCode === 13) {
 			if (e.shiftKey) {text += "\n";} 
