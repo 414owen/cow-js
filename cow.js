@@ -2,7 +2,7 @@
  *
  * @preserve
  * This is CowJS, a web developer's easter egg
- * Homepage: https://github.com/414owen/Nutmeg
+ * Homepage: https://github.com/414owen/cow-js
  *
  */
 
@@ -39,7 +39,7 @@
 				res.push(s.slice(0, t) + f);
 				s = s.slice(n);
 			}
-			res.push(s)
+			res.push(s);
 			return a.concat(res);
 		}, []);
 
