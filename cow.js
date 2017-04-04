@@ -82,6 +82,7 @@
 	// Handle keypresses
 	document.onkeydown = function(e) {
 		if (e.ctrlKey) {return;}
+		e.preventDefault();
 		if (e.keyCode === 13) {
 			if (e.shiftKey) {text += "\n";} 
 			else {cow(text); text  = "";}
