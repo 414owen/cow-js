@@ -15,7 +15,7 @@
  *
  */
 
-!function() {
+(function() {
 
 	// Repeat a string
 	function rep(a, b) {
@@ -107,4 +107,4 @@
 
 	// Be helpful
 	cow("Focus the page, type, then press enter");
-}();
+})();

@@ -18,7 +18,6 @@ boxes. Try the **live demo** on my website:
 * Cow nesting
 * Paste support
 * Neat line wrapping
-* 58 physical lines of code
 * One cow fits all
 * Literally years of non-stop entertainment
 
