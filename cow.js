@@ -38,8 +38,8 @@
 				if (ws.test(s[50])) {t++; n++;} 
 				else if (ws.test(s[48])) {t--; n--;} 
 				else if (!ws.test(s[49])) {f = "-"; n--;}
-				res.push((s.substr(0, t) + f).trim());
-				s = s.substr(n);
+				res.push((s.slice(0, t) + f).trim());
+				s = s.slice(n);
 			}
 			res.push(s.trim());
 			return a.concat(res);
@@ -90,11 +90,11 @@
 			if (e.shiftKey) {text += "\n";} 
 			else {cow(text); text  = "";}
 		} else if (e.keyCode === 8) {
-			text = text.substr(0, text.length - 1);
+			text = text.slice(0, text.length - 1);
 		} else if (e.key && e.key.length === 1) {
 			text += e.key;
 		} else if (e.keyIdentifier) {
-			var code = parseInt(e.keyIdentifier.substr(2), 16);
+			var code = parseInt(e.keyIdentifier.slice(2), 16);
 			if (code > 0) {
 				var key = String.fromCharCode(code);
 				if (!e.shiftKey) {key = key.toLowerCase();}
