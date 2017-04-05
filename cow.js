@@ -24,16 +24,28 @@
 		return res;
 	}
 
+	// This should enable far smaller minification, but it's not working...
+	// closure compiler keeps inlining it, even though I counted the bytes
+	// and leaving the function as-is is advantageous
+	function length(a) {return a.length;}
+
 	// State, whitespace regex, space alias
-	var text = "", ws = /^\s*$/, space = " ",
-		repSpace = rep.bind(space, space), badEls = ["textarea", "input"];
+	var text = "";
+	var ws = /^\s*$/;
+	var repSpace = rep.bind(" ", " ");
+
+	function printMono(text) {
+		console.log("%c " + text,
+			"font-family: monospace"
+		);
+	}
 
 	function cow(a) {
 
 		// Array of lines based on newlines and 50 char limit
 		var split = a.split("\n").reduce(function(a, s) {
 			var res = [];
-			while (s.length > 50) {
+			while (length(s) > 50) {
 				var t = 49, n = 50, f = "";
 				if (ws.test(s[50])) {t++; n++;} 
 				else if (ws.test(s[48])) {t--; n--;} 
@@ -44,37 +56,34 @@
 			res.push(s);
 			return a.concat(res);
 		}, []);
+
 		// Trim blank lines, but leave spaces in for formatting
 		while (ws.test(split[0])) {split = split.slice(1);}
-		while (ws.test(split[split.length - 1])) {split = split.slice(0, split.length - 1);}
+		while (ws.test(split[length(split) - 1])) {split = split.slice(0, length(split) - 1);}
 
 		// Don't print nothing
-		if (split.length === 0) {return;}
+		if (length(split) === 0) {return;}
 
 		// Find longest line
 		var longest = split.reduce(function(acc, val) {
-			return acc > val.length ? acc : val.length;
+			return acc > length(val) ? acc : length(val);
 		}, 0);
 
 		// Generate text box sides
-		var sides = split.length === 1 ? "<>" : 
-			"/\\" + rep("|", split.length * 2 - 4) + "\\/";
+		var sides = length(split) === 1 ? "<>" : 
+			"/\\" + rep("|", length(split) * 2 - 4) + "\\/";
 
-		var cow = rep("_", longest + 2) + "\n" +
+		return rep("_", longest + 2) + "\n" +
 			split.map(function(b, i) {
-				return sides[i * 2] + space + b + repSpace(longest - b.length) + 
-					space + sides[i * 2 + 1] + "\n";
+				return sides[i * 2] + " " + b + repSpace(longest - length(b)) + 
+					" " + sides[i * 2 + 1] + "\n";
 			}).join("") +
-			space + rep("-", longest + 2) + "\n" +
+			" " + rep("-", longest + 2) + "\n" +
 			repSpace(8)  + "\\   ^__^\n" +
 			repSpace(9)  + "\\  (oo)\\_______\n" +
 			repSpace(12) + "(__)\\       )\\/\\\n" +
 			repSpace(16) + "||----w |\n" +
 			repSpace(16) + "||     ||";
-
-		console.log("%c " + cow,
-			"font-family: monospace"
-		);
 	}
 
 	// Enable pasting
@@ -85,35 +94,50 @@
 	// Handle keypresses
 	document.onkeydown = function(e) {
 		var elName = document.activeElement.tagName.toLowerCase();
-		e.preventDefault();
+		var prevent = true;
+
+		// Backspace
 		if (e.keyCode === 8) {
+
+			// Ctrl-backspace = delete word
 			if (e.ctrlKey) {
 				var t = text.split(/\s/);
-				text = text.slice(0, text.length - t[t.length - 1].length);
-				while (ws.test(text[text.length - 1])) {
-					text = text.slice(0, text.length - 1);
+				text = text.slice(0, length(text) - length(t[length(t) - 1]));
+				while (ws.test(text[length(text) - 1])) {
+					text = text.slice(0, length(text) - 1);
 				}
 			} else {
-				text = text.slice(0, text.length - 1);
+				text = text.slice(0, length(text) - 1);
 			}
-		} else if (e.ctrlKey || (badEls.indexOf(elName) !== -1)) {
+		} else if (e.ctrlKey || (["textarea", "input"].indexOf(elName) !== -1)) {
+			prevent = false;
+			
+		// Enter key triggers cow
 		} else if (e.keyCode === 13) {
 			if (e.shiftKey) {text += "\n";} 
-			else {cow(text); text  = "";}
-		} else if (e.key && e.key.length === 1) {
+			else {
+				printMono(cow(text));
+				text = "";
+			}
+
+		// Add the character to the queue
+		} else if (e.key && length(e.key) === 1) {
 			text += e.key;
+
+		// Compensate for webkit being slow to adopt KeyboardEvent.key
 		} else if (e.keyIdentifier) {
 			var code = parseInt(e.keyIdentifier.slice(2), 16);
 			if (code > 0) {
 				var key = String.fromCharCode(code);
 				if (!e.shiftKey) {key = key.toLowerCase();}
-				if (key.length === 1) {
+				if (length(key) === 1) {
 					text += key;
 				}
 			}
 		}
+		if (prevent) {e.preventDefault();}
 	};
 
 	// Be helpful
-	cow("Focus the page, type, then press enter");
+	printMono(cow("Focus the page, type, then press enter"));
 })();
