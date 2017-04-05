@@ -35,9 +35,11 @@
 	var repSpace = rep.bind(" ", " ");
 
 	function printMono(text) {
-		console.log("%c " + text,
-			"font-family: monospace"
-		);
+		if (text) {
+			console.log("%c " + text,
+				"font-family: monospace"
+			);
+		}
 	}
 
 	function cow(a) {
