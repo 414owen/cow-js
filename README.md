@@ -19,6 +19,8 @@ boxes. Try the **live demo** on my website:
 * Paste support
 * Neat line wrapping
 * One cow fits all
+* Backspace and ctrl-backspace support
+* Compatible with at least three browsers
 * Literally years of non-stop entertainment
 
 ## How to put this on your site
@@ -29,6 +31,6 @@ boxes. Try the **live demo** on my website:
 
 ## Screenshots
 
-![Introduction, Marx & Engels - Firefox](https://owen.cafe/images/projects/cowjs/intro.png)
+![Introduction, Marx & Engels - Epiphany](https://owen.cafe/images/projects/cowjs/intro-1.png)
 ![Bee Movie - Chromium](https://owen.cafe/images/projects/cowjs/bee-1.png)
 ![Nested cows - Firefox](https://owen.cafe/images/projects/cowjs/nesting.png)
